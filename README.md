@@ -1,5 +1,5 @@
-git clone https://github.com/your-username/smart-water-bottle-display.git
-cd smart-water-bottle-display
+1. ```git clone https://github.com/your-username/smart-water-bottle-display.git ```
+```cd smart-water-bottle-display```
 ```
 
 2. Install dependencies using pip and pyproject.toml:
