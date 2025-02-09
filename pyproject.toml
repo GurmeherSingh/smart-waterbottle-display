@@ -1,7 +1,7 @@
 [project]
-name = "repl-nix-workspace"
+name = "smart-water-bottle-display"
 version = "0.1.0"
-description = "Add your description here"
+description = "A PyGame-based simulation of a smart water bottle's round display showing water metrics and battery status"
 requires-python = ">=3.11"
 dependencies = [
     "pygame>=2.6.1",
