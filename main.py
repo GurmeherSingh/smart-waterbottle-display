@@ -4,12 +4,23 @@ from bottle_display import BottleDisplay
 from sensor_mock import SensorData
 
 def get_weight_input():
-    pygame.init()
+    # Initialize pygame if not already initialized
+    if not pygame.get_init():
+        pygame.init()
+
+    # Set up the input screen
     screen = pygame.display.set_mode((400, 200))
     pygame.display.set_caption("Weight Input")
-    font = pygame.font.SysFont('Arial', 32)
+
+    # Initialize font
+    try:
+        font = pygame.font.SysFont('Arial', 32)
+    except:
+        font = pygame.font.Font(None, 32)  # Fallback to default font
+
     weight = ""
     input_active = True
+    clock = pygame.time.Clock()
 
     while input_active:
         for event in pygame.event.get():
@@ -24,12 +35,23 @@ def get_weight_input():
                 elif event.unicode.isnumeric() and len(weight) < 3:
                     weight += event.unicode
 
+        # Draw everything
         screen.fill((255, 255, 255))
+
+        # Draw prompt
         prompt = font.render("Enter your weight (lbs):", True, (0, 0, 0))
-        weight_text = font.render(weight + "_" if weight else "_", True, (0, 0, 0))
         screen.blit(prompt, (50, 50))
+
+        # Draw input
+        weight_text = font.render(weight + "_" if weight else "_", True, (0, 0, 0))
         screen.blit(weight_text, (50, 100))
+
         pygame.display.flip()
+        clock.tick(30)
+
+    # Clean up
+    pygame.display.quit()
+    pygame.display.init()
 
     return int(weight) if weight else 150  # Default to 150 if no input
 
