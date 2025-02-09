@@ -17,7 +17,12 @@ class SensorData:
         # Convert weight to required water
         ounces = weight_lbs / 2
         self.daily_target_liters = round(ounces * 0.0295735, 1)  # Convert oz to L
-        self.refills_needed = max(1, round(self.daily_target_liters))  # At least 1 refill
+
+        # Calculate refills needed based on target liters
+        # If target is less than 1L, need 1 refill
+        # If target is between 1-2L, need 2 refills
+        # If target is between 2-3L, need 3 refills, and so on
+        self.refills_needed = max(1, round(self.daily_target_liters + 0.5))
 
     def update(self):
         if self.refills_needed is None:
