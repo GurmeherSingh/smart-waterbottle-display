@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Replit specific
+.replit
+replit.nix
+.breakpoints
+.upm/
+.config/
+.cache/
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Generated files
+*.log
